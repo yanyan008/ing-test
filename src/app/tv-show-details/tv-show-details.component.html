@@ -1,0 +1,24 @@
+<div class="container-fluid">
+  <div class="d-flex flex-wrap">
+    <div class="col-md-12 col-lg-6">
+      <div class="card m-4">
+        <img [src]="tvShow.image.original" [alt]="tvShow.name" />
+        <div class="card-body">
+          <h1 class="card-title">
+            {{ tvShow.name }}
+          </h1>
+          <div class="description" [innerHTML]="tvShow.summary"></div>
+          <p *ngIf="tvShow.rating.average" class="card-text rated">
+            <fa-icon [icon]="icon.rating"></fa-icon>
+            {{ tvShow.rating.average }}
+          </p>
+
+          <p *ngIf="!tvShow.rating.average" class="card-text unrated">
+            <fa-icon [icon]="icon.rating"></fa-icon>
+            Unrated
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
