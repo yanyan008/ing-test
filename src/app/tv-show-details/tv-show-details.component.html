@@ -1,22 +1,30 @@
 <div class="container-fluid">
+  <button class="btn btn-primary m-4" [routerLink]="['/']" type="button">
+    <fa-icon [icon]="icon.back"></fa-icon> &nbsp; BACK TO LIST
+  </button>
   <div class="d-flex flex-wrap">
-    <div class="col-md-12 col-lg-6">
+    <div *ngIf="hasDetails" class="col-md-12 col-lg-6">
       <div class="card m-4">
         <img [src]="tvShow.image.original" [alt]="tvShow.name" />
         <div class="card-body">
-          <h1 class="card-title">
-            {{ tvShow.name }}
-          </h1>
-          <div class="description" [innerHTML]="tvShow.summary"></div>
-          <p *ngIf="tvShow.rating.average" class="card-text rated">
-            <fa-icon [icon]="icon.rating"></fa-icon>
-            {{ tvShow.rating.average }}
-          </p>
+          <div class="d-flex header">
+            <h1 class="card-title">
+              {{ tvShow.name }}
+            </h1>
+            <p *ngIf="tvShow.rating.average" class="card-text rated rating">
+              <fa-icon [icon]="icon.rating"></fa-icon>
+              {{ tvShow.rating.average }}
+            </p>
 
-          <p *ngIf="!tvShow.rating.average" class="card-text unrated">
-            <fa-icon [icon]="icon.rating"></fa-icon>
-            Unrated
-          </p>
+            <p *ngIf="!tvShow.rating.average" class="card-text unrated rating">
+              <fa-icon [icon]="icon.rating"></fa-icon>
+              Unrated
+            </p>
+          </div>
+
+          <div class="description" [innerHTML]="tvShow.summary"></div>
+
+          <p>Genre: {{ getGenre() }}</p>
         </div>
       </div>
     </div>

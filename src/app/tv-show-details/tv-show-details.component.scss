@@ -65,13 +65,8 @@
   cursor: pointer;
 }
 
-.card-title:hover {
-  color: #136cb2;
-  text-decoration: underline;
+.rating {
+  align-self: center;
+  margin-left: auto;
+  margin-right: 5px;
 }
-
-// @media only screen and (max-width: 1135px) {
-//   .card {
-//     width: 100%;
-//   }
-// }

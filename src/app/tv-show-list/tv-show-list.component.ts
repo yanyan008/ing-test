@@ -28,15 +28,15 @@ export class TvShowListComponent implements OnInit {
     private _cd: ChangeDetectorRef
   ) {}
 
-  get hasTvShowList() {
+  get hasTvShowList(): boolean {
     return this.tvShowList.length > 0;
   }
 
-  get hasTvShowSearchList() {
+  get hasTvShowSearchList(): boolean {
     return this.TvShowSearchList.length > 0;
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this._getShows();
   }
 

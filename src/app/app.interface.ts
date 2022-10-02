@@ -4,7 +4,7 @@ export interface TvShow {
   rating: Rating;
   summary: string;
   image: Image;
-  genre: string[];
+  genres: string[];
 }
 
 export interface Rating {

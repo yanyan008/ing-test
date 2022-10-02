@@ -13,9 +13,12 @@ export class AppService {
     return this._httpClient.get(`${environment.apiUrl}shows`);
   }
 
-
   getShowDetails(id: number): Observable<object> {
     return this._httpClient.get(`${environment.apiUrl}shows/${id}`);
+  }
+
+  getEpisodes(id: number): Observable<object> {
+    return this._httpClient.get(`${environment.apiUrl}shows/${id}/episodes`);
   }
 
   searchShow(search: string): Observable<object> {

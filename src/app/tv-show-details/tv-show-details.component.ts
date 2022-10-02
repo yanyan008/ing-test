@@ -7,7 +7,7 @@ import {
 import { ActivatedRoute } from '@angular/router';
 import { AppService } from '../app-service.service';
 import { TvShow } from '../app.interface';
-import { faMagnifyingGlass, faStar } from '@fortawesome/free-solid-svg-icons';
+import { faLessThan, faStar } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-tv-show-details',
@@ -19,10 +19,11 @@ export class TvShowDetailsComponent implements OnInit {
   tvShowList: TvShow[] = [];
   id: number;
   icon = {
-    search: faMagnifyingGlass,
+    back: faLessThan,
     rating: faStar,
   };
   tvShow: TvShow;
+  episodes: any;
 
   constructor(
     private _appService: AppService,
@@ -32,20 +33,22 @@ export class TvShowDetailsComponent implements OnInit {
     this.id = this._ar.snapshot.params['id'];
   }
 
-  ngOnInit(): void {
+  get hasDetails(): boolean {
+    return this?.tvShow && Object.keys(this.tvShow).length > 0;
+  }
+
+  ngOnInit() {
     this._getShows();
   }
 
   getGenre(): string {
-    console.log(this.tvShow.genre.join(', '));
-    return this.tvShow.genre.join(', ');
+    return this.tvShow.genres.join(', ');
   }
 
   private _getShows() {
     this._appService.getShowDetails(this.id).subscribe((res: TvShow) => {
       console.log(res);
       this.tvShow = res;
-      // this.tvShowList = res;
       this._cd.markForCheck();
     });
   }

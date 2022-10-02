@@ -5,11 +5,12 @@ import { TvShowListComponent } from './tv-show-list/tv-show-list.component';
 
 const routes: Routes = [
   {
+    path: '',
+    component: TvShowListComponent,
+  },
+  {
     path: 'home',
     component: TvShowListComponent,
-    children: [
-      // { path: '', component: AppComponent },
-    ],
   },
   { path: 'view/:id', component: TvShowDetailsComponent },
 ];
